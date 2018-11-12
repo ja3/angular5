@@ -81,10 +81,24 @@ private appareils = [
 
   saveAppareilsToServer() {
     this.httpClient
-      .post('https://http-client-demo-e09af.firebaseio.com//appareils.json', this.appareils)
+      .put('https://http-client-demo-e09af.firebaseio.com/appareils.json', this.appareils)
       .subscribe(
         () => {
           console.log('Enregistrement terminé !');
+        },
+        (error) => {
+          console.log('Erreur ! : ' + error);
+        }
+      );
+  }
+
+  getAppareilsFromServer() {
+    this.httpClient
+      .get<any[]>('https://http-client-demo-e09af.firebaseio.com/appareils.json')
+      .subscribe(
+        (response) => {
+          this.appareils = response;
+          this.emitAppareilSubject();
         },
         (error) => {
           console.log('Erreur ! : ' + error);
