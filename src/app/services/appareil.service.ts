@@ -1,5 +1,5 @@
 import { Subject } from 'rxjs/Subject';
-import  HttpClientModule, { HttpClient } from '@angular/common/http'
+import  { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core';
 
 @Injectable()
